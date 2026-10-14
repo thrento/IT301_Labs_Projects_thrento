@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: lightgreen;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        #body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <button id="box">Click Me! 😊</button>
+    <div id="body"></div>
+    <script>
+        const box = document.getElementById('box');
+        const body = document.getElementById('body');
+        function clickAction(event) {
+            box.style.backgroundColor = 'red';
+            box.textContent = "OUCH! 🤕";
+        }
+        function mouseOverAction(event) {
+            box.style.backgroundColor = 'yellow';
+            box.textContent = "Don't Touch Me 😠";
+        }
+        function mouseOutAction(event) {
+            box.style.backgroundColor = 'lightgreen';
+            box.textContent = "Phew 😌";
+        }
+        function doubleClickAction(event) {
+            box.style.backgroundColor = 'pink';
+            box.textContent = "Double Trouble 😵";
+        }
+        function mouseMoveAction(event) {
+            box.style.backgroundColor = 'lightblue';
+            box.textContent = "I see you 👀";
+        }
+        box.addEventListener('click', clickAction);
+        box.addEventListener('mouseover', mouseOverAction);
+        box.addEventListener('mouseout', mouseOutAction);
+        box.addEventListener('dblclick', doubleClickAction);
+        body.addEventListener('mousemove', mouseMoveAction);
+
+    </script>
+</body>
+</html>
