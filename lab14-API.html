@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let bttn = document.createElement('button');
+    bttn.type = 'button';
+    bttn.textContent = 'click for profile';
+
+    let form = document.createElement('form');
+    form.action = '#';
+    form.appendChild(bttn);
+    document.body.appendChild(form);
+
+    const createProfile = async () => {
+        const existingProfile = document.getElementById('profile-card');
+        if (existingProfile) {
+            existingProfile.remove();
+        }
+
+        const response = await fetch('https://randomuser.me/api/');
+        const data = await response.json();
+        const user = data.results[0];
+        console.log(user);
+
+        const profile = document.createElement('div');
+        profile.id = 'profile-card';
+
+        let src = user.picture.large;
+        profile.innerHTML = `
+            <h2>${user.name.first} ${user.name.last}</h2>
+            <p>Email: ${user.email}</p>
+            <p>Phone: ${user.phone}</p>
+            <img src="${src}" alt="${user.name.first} ${user.name.last}">
+        `;
+        document.body.appendChild(profile);
+    };
+    bttn.addEventListener('click', createProfile);
+</script>
+
+</body>
+</html>
