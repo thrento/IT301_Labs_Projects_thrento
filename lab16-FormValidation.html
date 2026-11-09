@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+         #password-rules {
+            display: none;
+            margin-top: 5px;
+        }
+
+        /* Show the rules div when the password field is focused */
+        #password:focus + #password-rules {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <form action="#" method="post" id="myForm">
